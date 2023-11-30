@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pave the Way</title>
+    <style>
+        /* Basic inline styles */
+        /* Basic inline styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+header p {
+    font-size: 18px;
+}
+
+header img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    background-color: #333;
+    text-align: center;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Collapsible sections with fade-in animation */
+.section {
+    opacity: 0;
+    display: none;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.section h2 {
+    cursor: pointer;
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.section p {
+    margin-top: 10px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Styling for team members with a subtle hover effect */
+.team-member {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+}
+
+.team-member img {
+    max-width: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+/* Styling for images in the home section with a zoom-in effect on hover */
+.home-images {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.home-images img {
+    max-width: 23%;
+    border: 2px solid #333;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.home-images img:hover {
+    transform: scale(1.05);
+}
+
+/* Styling for stories similar to events */
+.event {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.event:hover {
+    transform: scale(1.05);
+}
+
+.event img {
+    width: 100px; /* Set a fixed width */
+    height: 100px; /* Set a fixed height */
+    object-fit: cover; /* Maintain aspect ratio and cover container */
+    border-radius: 10px; /* Set a fixed border-radius for a square shape */
+    margin-right: 20px;
+}
+
+.event p {
+    color: #666;
+}
+
+/* Additional styles for story pop-ups */
+.story-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.story-popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+    overflow: auto;
+    text-align: center;
+}
+
+.story-popup img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.story-popup p {
+    color: #333;
+    text-align: justify;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #fff;
+    font-size: 18px;
+}
+
+.story-images {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.story {
+    width: 100%; /* Adjusted width to take full width */
+    position: relative; /* Added position relative */
+    overflow: hidden; /* Added overflow hidden to contain caption */
+    transition: transform 0.3s ease-in-out;
+}
+
+.story img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.story-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 90%; /* Adjusted width */
+    text-align: center; /* Center align text */
+    color: #333;
+    text-decoration: underline;
+}
+
+.story:hover {
+    transform: scale(1.05);
+}
+
+.story img:hover {
+    transform: scale(1.05);
+}
+
+/* Updated styles for story popups */
+.story-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Container for the image and text inside the popup */
+.story-popup-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling for the image inside the popup */
+.story-popup img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+/* Styling for the text inside the popup */
+.story-popup p {
+    color: #333;
+    text-align: justify;
+}
+
+/* Close button for the popup */
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.story-images img {
+    max-width: 23%;
+    border: 2px solid #333;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.story-images img:hover {
+    transform: scale(1.05);
+}
+
+/* Additional style for image captions */
+.story-caption {
+    cursor: pointer;
+    margin-top: 5px;
+    text-align: center;
+    color: #333;
+    text-decoration: underline;
+}
+
+/* Styling for images in the stories section with a zoom-in effect on hover */
+.story-images img {
+    max-width: 23%;
+    border: 2px solid #333;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.story-images img:hover {
+    transform: scale(1.05);
+}
+</style>
+</head>
+
+<body>
+    <header>
+        <!-- Logo, NGO Name, Slogan -->
+        <img src="pave-the-way-logo-2.png" alt="Pave the Way Logo">
+        <h1>Pave the Way</h1>
+        <p>Slogan: Restoring Dignity Through Love</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#team">Meet The Team</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#stories">Their Stories</a></li>
+            <li><a href="#help">How to Help</a></li>
+            <li><a href="#qa">Q&A</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <section class="section" id="home">
+        <!-- Home section content -->
+        <h2>Home</h2>
+        <p>Mission Statement: Concerned by the level of poverty and suffering in Lebanon, we have established Pave the way, an NGO that specifically targets the elderly Lebanese citizens as well as the homeless. Since the economic crisis that became fully apparent in 2019, and the disastrous Beirut blast in 2020, we have been seeing more and more elders in the streets of Beirut. We are deeply touched and troubled by this situation and are determined to do anything to relieve their suffering; we believe our elders deserve better!</p>
+        <div class="home-images">
+            <img src="distribution 1.jpg" alt="Image 1">
+            <img src="distribution 2.jpg" alt="Image 2">
+            <img src="Distribution 3.jpg" alt="Image 3">
+            <img src="Distribution 4.jpg" alt="Image 4">
+        </div>
+        <div class="home-images">
+            <img src="Distribution 5.jpg" alt="Image 5">
+            <img src="Distribution 6.jpg" alt="Image 6">
+            <img src="Distribution 7.jpg" alt="Image 7">
+            <img src="Distribution 8.jpg" alt="Image 8">
+        </div>
+    </section>
+
+    <section class="section" id="team">
+        <!-- Team section content -->
+        <h2>Meet The Team</h2>
+        <!-- Team member 1 -->
+        <div class="team-member">
+            <img src="Sasha Naim.jpg" alt="Team Member 1">
+            <div>
+                <h3>Sasha Naim</h3>
+                <p>Role: Co-Founder</p>
+                <p>About: Masters student in clinical psychology- Université Saint Joseph de Beyrouth</p>
+            </div>
+        </div>
+        <!-- Team member 2 -->
+        <div class="team-member">
+            <img src="Rawane Bahous.jpg" alt="Team Member 2">
+            <div>
+                <h3>Rawane Bahous</h3>
+                <p>Role: Co-Founder</p>
+                <p>About: Bachelor degree in Biology - LAU Medical Student - LAU</p>
+            </div>
+        </div>
+        <!-- Team member 3 -->
+        <div class="team-member">
+            <img src="Alia Zehil.jpg" alt="Team Member 3">
+            <div>
+                <h3>Alia Zehil</h3>
+                <p>Role: Social Media Manager</p>
+                <p>About: Bachelor In Product Design-Académie Libanaise Des Beaux Arts</p>
+            </div>
+        </div>
+        <!-- Team member 4 -->
+        <div class="team-member">
+            <img src="Paola Diab.jpg" alt="Team Member 4">
+            <div>
+                <h3>Paola Diab</h3>
+                <p>Role: Public Relation</p>
+                <p>About: Double bachelor in Psychology and Business Administration and Management-AUB </p>
+            </div>
+        </div>
+        <!-- Add more team members as needed -->
+    </section>
+
+    <!-- Other sections... -->
+
+    <section class="section" id="events">
+        <h2>Events</h2>
+        <!-- Event 1 -->
+        <div class="event">
+            <img src="Event 1.jpg" alt="Event 1">
+            <p>Date: 8th June, 2023</p>
+        </div>
+        <!-- Event 2 -->
+        <div class="event">
+            <img src="Event 2.jpg" alt="Event 2">
+            <p>Date: 7th July, 2023</p>
+        </div>
+        <!-- Event 3 -->
+        <div class="event">
+            <img src="Event 3.jpg" alt="Event 3">
+            <p>Date: 27, 28, 29, 30th July, 2023</p>
+        </div>
+        <!-- Event 4 -->
+        <div class="event">
+            <img src="Event 4.jpg" alt="Event 4">
+            <p>Date: 12, 13, 14th August, 2023</p>
+        </div>
+        <!-- Event 5 -->
+        <div class="event">
+            <img src="Event 5.jpg" alt="Event 5">
+            <p>Date: 22nd October, 2023</p>
+        </div>
+
+        <div class="event">
+            <img src="Event 6.jpg" alt="Event 6">
+            <p> Date: 11th December, 2023</p>
+        </div>
+
+        <div class="event">
+            <p>Stay updated on our upcoming events</p>
+        </div>
+        <!-- Add more events as needed -->
+    </section>
+
+<section class="section" id="stories">
+    <h2>Their Stories</h2>
+
+    <!-- Story 1 -->
+    <div class="story-images">
+        <div class="story" onclick="showStoryPopup(1)">
+            <img src="Elderly 1.jpg" alt="Elderly Person 1">
+        </div>
+        <p class="story-text">Help and support can come in many different ways and doesnt always have to be tangible or monetary. We can also donate our time, attention, and care and sometimes, it matters more than anything else.
+Yesterday, while walking around Beirut, we saw the sweetest old man sitting on the bench, feeding a cat with the utmost care.
+We couldnt but approach him and ended up talking for more than an hour. We had the most heartfelt and honest conversation about politics,life,family and most importantly the fate of our country.
+While talking, the sadness and heartache were taking more and more place, but he would always end every story with a humoristic note. We had tears in our eyes and were laughing at the same time.
+He told us his story, about how he prefers walking instead of using his car, that has been empty and parked on the side of the road for the past 10 months. He said it gives him time to reflect and connect with himself and body. He also said that he refuses to let food take control over him and believes in the power of the mind to overcome any challenge life throws at him, especially hunger.
+We of course offered to help in any way possible but he categorically refused.
+He kept on repeating that refusing help was his way of resisting, and standing up against corrruption.
+Although we couldn't be of great help to him, we still enjoyed connecting so much with a stranger. We were so grateful for this small yet very powerful moment.</p>
+    </div>
+
+    <!-- Story 2 -->
+    <div class="story-images">
+        <div class="story" onclick="showStoryPopup(2)">
+            <img src="Elderly 2.jpg" alt="Elderly Person 2">
+        </div>
+        <p class="story-text">Meet Joseph!
+we have been seeing him frequently on the streets of Badaro for the past months and were never able to help him as much as we wanted.
+Now, thanks to all of you who participated to our last event, we are able to provide Joseph with a food and hygiene box 📦!</p>
+    </div>
+
+    <!-- Story 3 -->
+    <div class="story-images">
+        <div class="story" onclick="showStoryPopup(3)">
+            <img src="Elderly 3.jpg" alt="Elderly Person 3">
+        </div>
+        <p class="story-text">We met 3 heartwarming elders who have lived under this bridge for a while.
+We used to see them every time we passed by these past few months.
+A few days ago, we were able to offer them a bit of hope and comfort all thanks to you!</p>
+    </div>
+
+    <!-- Story 4 -->
+    <div class="story-images">
+        <div class="story" onclick="showStoryPopup(4)">
+            <img src="Elderly 4.jpg" alt="Elderly Person 4">
+        </div>
+        <p class="story-text">During our first box distribution we met a lot of incredible people, and had the chance to stumble upon a particularly inspiring person.
+He was sleeping on the sidewalk, next to Raouche. Two of us had been seeing him laying there from time to time, so we finally decided to come up to him.
+We didn’t know how to wake him up without scaring him, so little kids who knew him did it for us while telling us that he was their friend.
+He woke up a bit startled and looked at us with sleepy eyes. We introduced ourselves and asked him if he would be interested in a box. He said he would on one condition: he wanted to know if he could share it with the little kids who were there.
+We were surprised to see that a man who had nothing, still had more humanity in him than most of us.
+We thought we would be helping, but ended up receiving way more from him than what we could have ever expected.</p>
+    </div>
+
+    <!-- Story 5 -->
+    <div class="story-images">
+        <div class="story" onclick="showStoryPopup(5)">
+            <img src="Elderly 5.jpg" alt="Elderly Person 5">
+        </div>
+        <p class="story-text">Asking for help shouldn’t be shameful. When completely abandoned by our flawed government, all we have left is each other. Let’s raise each other up, always walking side by side.</p>
+    </div>
+
+    <!-- Story 6 -->
+    <div class="story-images">
+        <div class="story" onclick="showStoryPopup(6)">
+            <img src="Elderly 6.jpg" alt="Elderly Person 6">
+        </div>
+        <p class="story-text"></p>
+    </div>
+
+
+
+
+    <!-- Add more stories as needed -->
+</section>
+        <section class="section" id="help">
+        <h2>How to Help</h2>
+        <p>Donations: <a href="donate.html">Donate Now</a></p>
+        <p>Help is not only money. You can also volunteer with us in our events or activities. Fill out our <a href="https://docs.google.com/forms/d/e/1FAIpQLScZMMbG7ihLYMbPU1ft7UGBP1WcWJnbHmAOPYFaK86Ztro0OA/viewform?usp=sf_link.html">Volunteer Form</a> to get involved.</p>
+    </section>
+
+    <section class="section" id="qa">
+        <h2>Q&A</h2>
+        <div class="qa-item">
+            <h3>Q: Who do we help?</h3>
+            <p>A: We focus on the people we often see on the streets and the elderly hiding in their homes that we have met through other social activities.</p>
+        </div>
+        <div class="qa-item">
+            <h3>Q: What’s in a box?</h3>
+            <p>A: We have two types of boxes:
+<br>
+Homeless:
+<Br>&nbsp &nbsp &nbsp Halawa
+<br>&nbsp &nbsp &nbsp Tuna
+<br>&nbsp &nbsp &nbsp Sardine
+<br>&nbsp &nbsp &nbsp Beans
+<br>&nbsp &nbsp &nbsp Canned Meat/Chicken
+<br>&nbsp &nbsp &nbsp Processed Cheese
+<br>&nbsp &nbsp &nbsp Biscuits
+<br>&nbsp &nbsp &nbsp Chocolates
+<br>&nbsp &nbsp &nbsp Dates
+<br>&nbsp &nbsp &nbsp Wipes
+<br>&nbsp &nbsp &nbsp Kleenex
+<br>&nbsp &nbsp &nbsp Toothbrush
+<br>&nbsp &nbsp &nbsp Toothpaste
+<br>
+<br>Elderly:
+<br>&nbsp &nbsp &nbsp Rice
+<br>&nbsp &nbsp &nbsp Sugar
+<br>&nbsp &nbsp &nbsp Salt
+<br>&nbsp &nbsp &nbsp Flour
+<br>&nbsp &nbsp &nbsp Lentil
+<br>&nbsp &nbsp &nbsp Oil
+<br>&nbsp &nbsp &nbsp Pasta
+<br>&nbsp &nbsp &nbsp Tomato Paste
+<br>&nbsp &nbsp &nbsp Sardine
+<br>&nbsp &nbsp &nbsp Tuna
+<br>&nbsp &nbsp &nbsp Canned Meat/Chicken
+<br>&nbsp &nbsp &nbsp Processed Cheese
+<br>&nbsp &nbsp &nbsp Biscuits
+<br>&nbsp &nbsp &nbsp Jam
+<br>&nbsp &nbsp &nbsp Toothbrush
+<br>&nbsp &nbsp &nbsp Toothpaste
+<br>&nbsp &nbsp &nbsp Bar Soap
+<br>&nbsp &nbsp &nbsp Dishwasher Soap
+<br>&nbsp &nbsp &nbsp Wipes
+<br>&nbsp &nbsp &nbsp Kleenex
+</p>
+        </div>
+        <div class="qa-item">
+            <h3>Q: How much does one box cost?</h3>
+            <p>A: Around 20$ for an elderly box and around 15$ for a homeless one.</p>
+        </div>
+        <div class="qa-item">
+            <h3>Q: Where are we based?</h3>
+            <p>A: Our team is based in Beirut and our work is, for now, limited to Beirut and its extended areas.</p>
+        </div>
+        <!-- Add more questions and answers as needed -->
+    </section>
+
+    <section class="section" id="contact">
+        <h2>Contact Us</h2>
+        <p>Email: pavetheway.lb@gmail.com</p>
+        <p>Instagram: <a href="https://www.instagram.com/pavetheway.lb/?utm_source=ig_web_button_share_sheet">@pavetheway.lb</a></p>
+        <p>Sasha Naim: 78 828 314</p>
+        <p>Rawane Bahous: 03 259 330</p>
+    </section>
+
+    <!-- Add more sections as needed -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        function showSection(sectionId) {
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            const sectionToShow = document.querySelector(sectionId);
+            if (sectionToShow) {
+                sectionToShow.style.display = 'block';
+            }
+        }
+
+        function showStoryPopup(storyId) {
+            const storyPopup = document.querySelector(`#story-popup-${storyId}`);
+            if (storyPopup) {
+                storyPopup.style.display = 'flex';
+            }
+        }
+
+        function closeStoryPopup(storyId) {
+            const storyPopup = document.querySelector(`#story-popup-${storyId}`);
+            if (storyPopup) {
+                storyPopup.style.display = 'none';
+            }
+        }
+
+        showSection('#home');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetSection = event.target.getAttribute('href');
+                showSection(targetSection);
+            });
+        });
+
+        const storyCaptions = document.querySelectorAll('.story-caption');
+        storyCaptions.forEach((caption, index) => {
+            caption.addEventListener('click', () => showStoryPopup(index + 1));
+        });
+
+        const closePopups = document.querySelectorAll('.close-popup');
+        closePopups.forEach((closeBtn, index) => {
+            closeBtn.addEventListener('click', () => closeStoryPopup(index + 1));
+        });
+
+        document.addEventListener('click', function (event) {
+            if (event.target.classList.contains('story-popup')) {
+                const storyPopup = event.target;
+                storyPopup.style.display = 'none';
+            }
+        });
+    });
+// Function to show the popup for a specific story
+function showStoryPopup(storyId) {
+    const storyPopup = document.querySelector(`#story-popup-${storyId}`);
+    if (storyPopup) {
+        storyPopup.style.display = 'flex';
+    }
+}
+
+// Function to close the popup for a specific story
+function closeStoryPopup(storyId) {
+    const storyPopup = document.querySelector(`#story-popup-${storyId}`);
+    if (storyPopup) {
+        storyPopup.style.display = 'none';
+    }
+}
+</script>
+
+
+</body>
+</html>
+ 
+ 
+
